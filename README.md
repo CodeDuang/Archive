@@ -8,5 +8,5 @@ git status  :获取状态
 git commit -m'内容写在这里'   :本次改动备注（必须有）
 git push  :同步本地仓库到github
 
-git ull :github内容同步到本地
+git pull :github内容同步到本地
 
