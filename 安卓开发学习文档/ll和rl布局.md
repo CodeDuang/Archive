@@ -7,6 +7,10 @@ android:background
 ndroid:layout_margin (页边空白)
 android:padding (填充)
 android:orientation (方向) ："vertical (竖的) / horizontal (横的)"
+android:gravity（重力，一般用于父容器对内容中心对齐）："center"
+
+
+
 
 ---
 

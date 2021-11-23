@@ -79,3 +79,27 @@
 
 一般在布局xml里面的用background属性链接对应样式id。
 
+---
+
+==button触法提示事件==
+
+ ##### 设置按钮触法事件（和跳转页面同）
+
+略
+
+##### 提示文本设置
+
+在onClick（View v）方法里，不使用Intent页面切换代码，改用Toast代码。
+
+1.调用makeTest（）方法，参数有三个：.this、文本内容、显示时长
+
+2.在makeTest（）方法后紧接着调用show（）方法（eg：Toast.makeText().show()）
+
+参考代码：
+
+```java
+Toast.makeText(EditTextActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
+```
+
+
+
