@@ -1,0 +1,3477 @@
+package com.example.myproject.heart;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.myproject.R;
+
+public class AddActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add);
+    }
+}
+package com.example.myproject.login;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.myproject.R;
+
+public class Agreement extends AppCompatActivity {
+    private Button mBtnLoginAgreementCancle;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_agreement);
+        mBtnLoginAgreementCancle = findViewById(R.id.login_agreement_cancel);
+        mBtnLoginAgreementCancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+}
+package com.example.myproject.login;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+
+import java.util.Random;
+
+
+
+public class Code {
+    /**
+     * 随机数数组
+     * 去除了易混淆的 数字 0 和 字母 o O
+     *                数字 1 和 字母 i I l L
+     *                数字 6 和 字母 b
+     *                数字 9 和 字母 q
+     *                字母 c C 和 G
+     *                字母 t （经常和随机线混在一起看不清）
+     */
+    private static final char[] CHARS = {
+            '2', '3', '4', '5',  '7', '8',
+            'a',  'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm',
+            'n', 'p',  'r', 's',  'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B',  'D', 'E', 'F',  'H',  'J', 'K', 'M',
+            'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    };
+
+    private static Code bmpCode;
+
+    public static Code getInstance() {
+        if(bmpCode == null)
+            bmpCode = new Code();
+        return bmpCode;
+    }
+
+    //default settings
+    //验证码默认随机数的个数
+    private static final int DEFAULT_CODE_LENGTH = 4;
+    //默认字体大小
+    private static final int DEFAULT_FONT_SIZE = 25;
+    //默认线条的条数
+    private static final int DEFAULT_LINE_NUMBER = 5;
+    //padding值
+    private static final int BASE_PADDING_LEFT = 10, RANGE_PADDING_LEFT = 15, BASE_PADDING_TOP = 15, RANGE_PADDING_TOP = 20;
+    //验证码的默认宽高
+    private static final int DEFAULT_WIDTH = 100, DEFAULT_HEIGHT = 40;
+
+    //settings decided by the layout xml
+    //canvas width and height
+    private int width = DEFAULT_WIDTH, height = DEFAULT_HEIGHT;
+
+    //random word space and pading_top
+    private int base_padding_left = BASE_PADDING_LEFT, range_padding_left = RANGE_PADDING_LEFT,
+            base_padding_top = BASE_PADDING_TOP, range_padding_top = RANGE_PADDING_TOP;
+
+    //number of chars, lines; font size
+    private int codeLength = DEFAULT_CODE_LENGTH, line_number = DEFAULT_LINE_NUMBER, font_size = DEFAULT_FONT_SIZE;
+
+    //variables
+    private String code;
+    private int padding_left, padding_top;
+    private Random random = new Random();
+    //验证码图片
+    public Bitmap createBitmap() {
+        padding_left = 0;
+
+        Bitmap bp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bp);
+
+        code = createCode();
+
+        c.drawColor(Color.WHITE);
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setTextSize(font_size);
+        //画验证码
+        for (int i = 0; i < code.length(); i++) {
+            randomTextStyle(paint);
+            randomPadding();
+            c.drawText(code.charAt(i) + "", padding_left, padding_top, paint);
+        }
+        //画线条
+        for (int i = 0; i < line_number; i++) {
+            drawLine(c, paint);
+        }
+
+//        c.save( Canvas.ALL_SAVE_FLAG );//保存
+        c.save();//保存
+        c.restore();//
+        return bp;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    //生成验证码
+    private String createCode() {
+        StringBuilder buffer = new StringBuilder();
+        for (int i = 0; i < codeLength; i++) {
+            buffer.append(CHARS[random.nextInt(CHARS.length)]);
+        }
+        return buffer.toString();
+    }
+    //画干扰线
+    private void drawLine(Canvas canvas, Paint paint) {
+        int color = randomColor();
+        int startX = random.nextInt(width);
+        int startY = random.nextInt(height);
+        int stopX = random.nextInt(width);
+        int stopY = random.nextInt(height);
+        paint.setStrokeWidth(1);
+        paint.setColor(color);
+        canvas.drawLine(startX, startY, stopX, stopY, paint);
+    }
+    //生成随机颜色
+    private int randomColor() {
+        return randomColor(1);
+    }
+
+    private int randomColor(int rate) {
+        int red = random.nextInt(256) / rate;
+        int green = random.nextInt(256) / rate;
+        int blue = random.nextInt(256) / rate;
+        return Color.rgb(red, green, blue);
+    }
+    //随机生成文字样式，颜色，粗细，倾斜度
+    private void randomTextStyle(Paint paint) {
+        int color = randomColor();
+        paint.setColor(color);
+        paint.setFakeBoldText(random.nextBoolean());  //true为粗体，false为非粗体
+        float skewX = random.nextInt(11) / 10;
+        skewX = random.nextBoolean() ? skewX : -skewX;
+        paint.setTextSkewX(skewX); //float类型参数，负数表示右斜，整数左斜
+        //paint.setUnderlineText(true); //true为下划线，false为非下划线
+        //paint.setStrikeThruText(true); //true为删除线，false为非删除线
+    }
+    //随机生成padding值
+    private void randomPadding() {
+        padding_left += base_padding_left + random.nextInt(range_padding_left);
+        padding_top = base_padding_top + random.nextInt(range_padding_top);
+    }
+}
+package com.example.myproject.login;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+
+/**
+ * Created by littlecurl 2018/6/24
+ */
+
+public class DBOpenHelper extends SQLiteOpenHelper {
+    /**
+     * 声明一个AndroidSDK自带的数据库变量db
+     */
+    private SQLiteDatabase db;
+
+    /**
+     * 写一个这个类的构造函数，参数为上下文context，所谓上下文就是这个类所在包的路径
+     * 指明上下文，数据库名，工厂默认空值，版本号默认从1开始
+     * super(context,"db_test",null,1);
+     * 把数据库设置成可写入状态，除非内存已满，那时候会自动设置为只读模式
+     * 不过，以现如今的内存容量，估计一辈子也见不到几次内存占满的状态
+     * db = getReadableDatabase();
+     */
+    public DBOpenHelper(Context context){
+        super(context,"db_test",null,1);
+        db = getReadableDatabase();
+    }
+
+    /**
+     * 重写两个必须要重写的方法，因为class DBOpenHelper extends SQLiteOpenHelper
+     * 而这两个方法是 abstract 类 SQLiteOpenHelper 中声明的 abstract 方法
+     * 所以必须在子类 DBOpenHelper 中重写 abstract 方法
+     * 想想也是，为啥规定这么死必须重写？
+     * 因为，一个数据库表，首先是要被创建的，然后免不了是要进行增删改操作的
+     * 所以就有onCreate()、onUpgrade()两个方法
+     * @param db
+     */
+    @Override
+    public void onCreate(SQLiteDatabase db){
+        db.execSQL("CREATE TABLE IF NOT EXISTS user(" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "name TEXT," +
+                "password TEXT)");
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        db.execSQL("DROP TABLE IF EXISTS user");
+        onCreate(db);
+    }
+    /**
+     * 接下来写自定义的增删改查方法
+     * 这些方法，写在这里归写在这里，以后不一定都用
+     * add()
+     * delete()
+     * update()
+     * getAllData()
+     */
+    public void add(String name,String password){
+        db.execSQL("INSERT INTO user (name,password) VALUES(?,?)",new Object[]{name,password});
+    }
+    public void delete(String name,String password){
+        db.execSQL("DELETE FROM user WHERE name = AND password ="+name+password);
+    }
+    public void updata(String password){
+        db.execSQL("UPDATE user SET password = ?",new Object[]{password});
+    }
+
+    /**
+     * 前三个没啥说的，都是一套的看懂一个其他的都能懂了
+     * 下面重点说一下查询表user全部内容的方法
+     * 我们查询出来的内容，需要有个容器存放，以供使用，
+     * 所以定义了一个ArrayList类的list
+     * 有了容器，接下来就该从表中查询数据了，
+     * 这里使用游标Cursor，这就是数据库的功底了，
+     * 在Android中我就不细说了，因为我数据库功底也不是很厚，
+     * 但我知道，如果需要用Cursor的话，第一个参数："表名"，中间5个：null，
+     *                                                     最后是查询出来内容的排序方式："name DESC"
+     * 游标定义好了，接下来写一个while循环，让游标从表头游到表尾
+     * 在游的过程中把游出来的数据存放到list容器中
+     * @return
+     */
+    public ArrayList<com.example.myproject.login.User> getAllData(){
+
+        ArrayList<com.example.myproject.login.User> list = new ArrayList<com.example.myproject.login.User>();
+        Cursor cursor = db.query("user",null,null,null,null,null,"name DESC");
+        while(cursor.moveToNext()){
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String password = cursor.getString(cursor.getColumnIndex("password"));
+            list.add(new com.example.myproject.login.User(name,password));
+        }
+        return list;
+    }
+}
+package com.example.myproject;
+
+import android.content.Context;
+
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static org.junit.Assert.*;
+
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+@RunWith(AndroidJUnit4.class)
+public class ExampleInstrumentedTest {
+    @Test
+    public void useAppContext() {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        assertEquals("com.example.myproject", appContext.getPackageName());
+    }
+}
+package com.example.myproject;
+
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
+public class ExampleUnitTest {
+    @Test
+    public void addition_isCorrect() {
+        assertEquals(4, 2 + 2);
+    }
+}
+package com.example.myproject.seek;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+//import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myproject.R;
+
+import java.util.List;
+
+public class GridViewAdapter extends BaseAdapter {
+    //建立头像列表[0]、姓名列表[1]、咨询次数列表[2]、好评列表[3]
+//    private List<ImageView> datas_image;
+//    private List<String> datas_name;
+//    private List<Integer> datas_time;
+//    private List<Float> datas_good;
+    private List<Object[]> datas;
+    private Context context;
+
+    //构造函数
+    public GridViewAdapter(List<Object[]> datas, Context context) {
+        this.datas = datas;
+        this.context = context;
+    }
+
+
+    //列表里面的数据个数
+    @Override
+    public int getCount() {
+        return datas.size();
+    }
+
+    //返回列表中对应下标的数据对象
+    @Override
+    public Object getItem(int i) {
+        return datas.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return i;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
+        if (view == null){
+            holder = new ViewHolder();
+            //将定义好的模板xml布局，转化为view，以供引用
+            view = LayoutInflater.from(context).inflate(R.layout.item_seek_teacher,viewGroup,false);
+
+            //以”view“为中介，绑定holder的属性与定义的item模板组件
+            holder.head = view.findViewById(R.id.seek_teacher_head);
+            holder.name = view.findViewById(R.id.seek_teacher_name);
+            holder.time = view.findViewById(R.id.seek_teacher_time);
+            holder.good = view.findViewById(R.id.seek_teacher_good);
+
+            //将holder缓存至view
+            view.setTag(holder);
+        }else {
+            //如果已经有view，则取出缓存的holder
+            holder = (ViewHolder) view.getTag();
+
+        }
+        //赋值头像图片id,名字，咨询次数，好评
+        holder.head.setImageResource((int)datas.get(i)[0]);
+        holder.name.setText((String)datas.get(i)[1]);
+        holder.time.setText((String)datas.get(i)[2]);
+        holder.good.setText((String)datas.get(i)[3]);
+        return view;
+    }
+
+    class ViewHolder{
+        //头像、姓名、咨询次数、好评
+        ImageView head;
+        TextView name,time,good;
+    }
+}
+
+package com.example.myproject.Fragment;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.myproject.R;
+
+public class HeartFragment extends Fragment {
+
+
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
+
+    public HeartFragment() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+
+
+
+    }
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_heart, container, false);
+    }
+
+}
+
+package com.example.myproject.Fragment;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.myproject.R;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link InformationFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class InformationFragment extends Fragment {
+
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public InformationFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment InformationFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static InformationFragment newInstance(String param1, String param2) {
+        InformationFragment fragment = new InformationFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_information, container, false);
+    }
+}
+
+
+package com.example.myproject.heart;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.myproject.R;
+
+public class item extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_item);
+    }
+}
+package com.example.myproject.login;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.myproject.MainActivity;
+import com.example.myproject.Mmain;
+import com.example.myproject.R;
+
+import java.util.ArrayList;
+
+public class Login extends AppCompatActivity implements View.OnClickListener{
+    /**
+     * 声明自己写的 DBOpenHelper 对象
+     * DBOpenHelper(extends SQLiteOpenHelper) 主要用来
+     * 创建数据表
+     * 然后再进行数据表的增、删、改、查操作
+     */
+    private DBOpenHelper mDBOpenHelper;
+    private TextView mTvLoginactivityRegister;
+    private RelativeLayout mRlLoginactivityTop;
+    private EditText mEtLoginactivityUsername;
+    private EditText mEtLoginactivityPassword;
+    private LinearLayout mLlLoginactivityTwo;
+    private Button mBtLoginactivityLogin;
+    private CheckBox checkBox;
+    private Button mBtLoginAgreement1;
+    private Button mBtLoginAgreement2;
+
+    /**
+     * 创建 Activity 时先来重写 onCreate() 方法
+     * 保存实例状态
+     * super.onCreate(savedInstanceState);
+     * 设置视图内容的配置文件
+     * setContentView(R.layout.activity_login);
+     * 上面这行代码真正实现了把视图层 View 也就是 layout 的内容放到 Activity 中进行显示
+     * 初始化视图中的控件对象 initView()
+     * 实例化 DBOpenHelper，待会进行登录验证的时候要用来进行数据查询
+     * mDBOpenHelper = new DBOpenHelper(this);
+     */
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        initView();
+
+        mDBOpenHelper = new DBOpenHelper(this);
+    }
+
+    /**
+     * onCreae()中大的布局已经摆放好了，接下来就该把layout里的东西
+     * 声明、实例化对象然后有行为的赋予其行为
+     * 这样就可以把视图层View也就是layout 与 控制层 Java 结合起来了
+     */
+    private void initView() {
+        // 初始化控件
+        mBtLoginactivityLogin = findViewById(R.id.login_bt_login);
+        mTvLoginactivityRegister = findViewById(R.id.login_bt_register);
+        //mRlLoginactivityTop = findViewById(R.id.rl_loginactivity_top);
+        mEtLoginactivityUsername = findViewById(R.id.xuehao);
+        mEtLoginactivityPassword = findViewById(R.id.mima);
+        //mLlLoginactivityTwo = findViewById(R.id.ll_loginactivity_two);
+        checkBox = findViewById(R.id.login_cb_1);
+        mBtLoginAgreement1 = findViewById(R.id.login_bt_1); //用户隐私协议内容跳转按钮
+        mBtLoginAgreement2 = findViewById(R.id.login_bt_2);
+
+        // 设置点击事件监听器
+        mBtLoginactivityLogin.setOnClickListener(this);
+        mTvLoginactivityRegister.setOnClickListener(this);
+        mBtLoginAgreement1.setOnClickListener(this);
+        mBtLoginAgreement2.setOnClickListener(this);
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            // 跳转到注册界面
+            case R.id.login_bt_register:
+                startActivity(new Intent(this, Regester.class));
+                finish();
+                break;
+            /**
+             * 登录验证：
+             *
+             * 从EditText的对象上获取文本编辑框输入的数据，并把左右两边的空格去掉
+             *  String name = mEtLoginactivityUsername.getText().toString().trim();
+             *  String password = mEtLoginactivityPassword.getText().toString().trim();
+             *  进行匹配验证,先判断一下用户名密码是否为空，
+             *  if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(password))
+             *  再进而for循环判断是否与数据库中的数据相匹配
+             *  if (name.equals(user.getName()) && password.equals(user.getPassword()))
+             *  一旦匹配，立即将match = true；break；
+             *  否则 一直匹配到结束 match = false；
+             *
+             *  登录成功之后，进行页面跳转：
+             *
+             *  Intent intent = new Intent(this, MainActivity.class);
+             *  startActivity(intent);
+             *  finish();//销毁此Activity
+             */
+            case R.id.login_bt_login:
+                String name = mEtLoginactivityUsername.getText().toString().trim();
+                String password = mEtLoginactivityPassword.getText().toString().trim();
+                if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(password)) {
+                    if (checkBox.isChecked()){
+                        ArrayList<User> data = mDBOpenHelper.getAllData();
+                        boolean match = false;
+                        for (int i = 0; i < data.size(); i++) {
+                            User user = data.get(i);
+                            if (name.equals(user.getName()) && password.equals(user.getPassword())) { //登陆验证逻辑有问题
+                                match = true;
+                                break;
+                            } else {
+                                match = false;
+                            }
+                        }
+                        if (match) {
+                            Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(this, Mmain.class);
+                            startActivity(intent);
+                            finish();//销毁此Activity
+                        } else {
+                            Toast.makeText(this, "用户名或密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(this, "请勾选同意协议", Toast.LENGTH_SHORT).show();
+                    }
+
+                } else {
+                    Toast.makeText(this, "请输入你的用户名或密码", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.login_bt_1:
+                Intent intent_bt_1 = new Intent(Login.this, Agreement.class);
+                startActivity(intent_bt_1);
+                break;
+            case R.id.login_bt_2:
+                Intent intent_bt_2 = new Intent(Login.this, Agreement.class);
+                startActivity(intent_bt_2);
+                break;
+        }
+    }
+}
+
+package com.example.myproject;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.example.myproject.login.Login;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MainActivity extends AppCompatActivity {
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Intent intent = new Intent(MainActivity.this, Login.class);
+
+        Timer timer = new Timer(); //创建定时对象
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() { //执行
+                startActivity(intent);
+            }
+        };
+
+        timer.schedule(task, 1000*1); //1s后
+
+
+
+    }
+}
+
+package com.example.myproject;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.RadioGroup;
+
+import com.example.myproject.Fragment.HeartFragment;
+import com.example.myproject.Fragment.InformationFragment;
+import com.example.myproject.Fragment.SeekFragment;
+import com.example.myproject.Fragment.UserFragment;
+import com.example.myproject.heart.AddActivity;
+import com.example.myproject.Fragment.TreeFragment;
+
+public class Mmain extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
+
+
+    RadioGroup radioGroup;
+//    声明四个按钮对应的Fragment对象
+    Fragment seek, tree, heart, user, information;
+    private FragmentManager manager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mmain);
+
+        radioGroup = findViewById(R.id.main_rg);
+//        设置监听了哪个按钮
+        radioGroup.setOnCheckedChangeListener(this::onCheckedChanged);
+
+//      创建碎片对象
+        seek = new SeekFragment();
+        tree = new TreeFragment();
+        heart = new HeartFragment();
+        user = new UserFragment();
+        information = new InformationFragment();
+//      将四个碎片动态加载到布局中  。replace 或 add/hide/show  (本次使用前者)
+        addFragmentPage();
+
+
+
+
+    }
+
+    /**
+     * @des 将主页当中的碎片一起加载进入布局，有用的显示，暂时无用的隐藏
+     */
+    private void addFragmentPage() {
+//      1.创建碎片管理者对象
+        manager = getSupportFragmentManager();
+//      2.创建碎片处理事务的对象
+        FragmentTransaction transaction = manager.beginTransaction();
+//      3.将四个Fragment碎片统一的添加到布局当中(不是，舍弃了add，换成了replace)
+        transaction.replace(R.id.main_layout_center,seek); //首页显示seek页面
+
+//      5.提交改变后的事务
+        transaction.commit();
+
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        FragmentTransaction transaction = manager.beginTransaction();
+        switch (i){
+            case R.id.main_rb_seek:
+                transaction.replace(R.id.main_layout_center,seek);
+                break;
+            case R.id.main_rb_tree:
+                transaction.replace(R.id.main_layout_center,tree);
+                break;
+            case R.id.main_rb_heart:
+                transaction.replace(R.id.main_layout_center,heart);
+                break;
+            case R.id.main_rb_user:
+                transaction.replace(R.id.main_layout_center,user);
+                break;
+            case R.id.main_rb_information:
+                transaction.replace(R.id.main_layout_center,information);
+                break;
+        }
+        transaction.commit();
+
+    }
+
+    //这是HeartFrament碎片内的一个按钮方法，在heart。xml里面声明的
+    public void add(View view) {
+        Intent intent = new Intent(Mmain.this, AddActivity.class);
+        startActivity(intent);
+    }
+}
+
+package com.example.myproject.seek;
+
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+
+import java.util.List;
+
+public class MyViewPagerAdapter extends PagerAdapter {
+
+    private List<ImageView> mImageViewsList;
+
+    public MyViewPagerAdapter(List<ImageView> mImageViewsList) {
+        this.mImageViewsList = mImageViewsList;
+    }
+
+    @Override
+    public int getCount() {
+        return mImageViewsList == null?0:mImageViewsList.size();
+    }
+
+    @Override
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
+    }
+
+    @NonNull
+    @Override
+    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        //获取对应下标的图片
+        ImageView imageView = mImageViewsList.get(position);
+
+        //获取的图片加入viewpage主页面
+        container.addView(imageView);
+
+        //返回获取的图片
+        return imageView;
+    }
+
+    //当图片被划走，销毁该图片
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+//        super.destroyItem(container, position, object); 这段一定要去掉
+        container.removeView((View) object);
+    }
+}
+
+package com.example.myproject.login;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.example.myproject.Mmain;
+import com.example.myproject.R;
+
+public class Regester extends AppCompatActivity implements View.OnClickListener{
+    private String realCode;
+    private DBOpenHelper mDBOpenHelper;
+    private Button mBtRegisteractivityRegister;
+    private RelativeLayout mRlRegisteractivityTop;
+    private ImageView mIvRegisteractivityBack;
+    private LinearLayout mLlRegisteractivityBody;
+    private EditText mEtRegisteractivityUsername;
+    private EditText mEtRegisteractivityPassword1;
+    private EditText mEtRegisteractivityPassword2;
+    private EditText mEtRegisteractivityPhonecodes;
+    private ImageView mIvRegisteractivityShowcode;
+    private RelativeLayout mRlRegisteractivityBottom;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_regester);
+        initView();
+
+        mDBOpenHelper = new DBOpenHelper(this);
+
+        //将验证码用图片的形式显示出来
+        mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
+        realCode = Code.getInstance().getCode().toLowerCase();
+    }
+
+    private void initView(){
+        mBtRegisteractivityRegister = findViewById(R.id.bt_registeractivity_register);
+        mRlRegisteractivityTop = findViewById(R.id.rl_registeractivity_top);
+        mIvRegisteractivityBack = findViewById(R.id.iv_registeractivity_back);
+        mLlRegisteractivityBody = findViewById(R.id.ll_registeractivity_body);
+        mEtRegisteractivityUsername = findViewById(R.id.et_registeractivity_username);
+        mEtRegisteractivityPassword1 = findViewById(R.id.et_registeractivity_password1);
+        mEtRegisteractivityPassword2 = findViewById(R.id.et_registeractivity_password2);
+        mEtRegisteractivityPhonecodes = findViewById(R.id.et_registeractivity_phoneCodes);
+        mIvRegisteractivityShowcode = findViewById(R.id.iv_registeractivity_showCode);
+        mRlRegisteractivityBottom = findViewById(R.id.rl_registeractivity_bottom);
+
+        /**
+         * 注册页面能点击的就三个地方
+         * top处返回箭头、刷新验证码图片、注册按钮
+         */
+        mIvRegisteractivityBack.setOnClickListener(this);
+        mIvRegisteractivityShowcode.setOnClickListener(this);
+        mBtRegisteractivityRegister.setOnClickListener(this);
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_registeractivity_back: //返回登录页面
+                Intent intent1 = new Intent(this, Login.class);
+                startActivity(intent1);
+                finish();
+                break;
+            case R.id.iv_registeractivity_showCode:    //改变随机验证码的生成
+                mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
+                realCode = Code.getInstance().getCode().toLowerCase();
+                break;
+            case R.id.bt_registeractivity_register:    //注册按钮
+                //获取用户输入的用户名、密码、验证码
+                String username = mEtRegisteractivityUsername.getText().toString().trim();
+                String password = mEtRegisteractivityPassword2.getText().toString().trim();
+                String phoneCode = mEtRegisteractivityPhonecodes.getText().toString().toLowerCase();
+                //注册验证
+                if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(phoneCode) ) {
+                    if (phoneCode.equals(realCode)) {
+                        //将用户名和密码加入到数据库中
+                        mDBOpenHelper.add(username, password);
+                        Intent intent2 = new Intent(this, Mmain.class);
+                        startActivity(intent2);
+                        finish();
+                        Toast.makeText(this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "验证码错误,注册失败", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(this, "未完善信息，注册失败", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
+}
+
+package com.example.myproject.user;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.myproject.R;
+
+public class RelateApp extends AppCompatActivity {
+    private Button back;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_relateapp);
+
+        back = findViewById(R.id.user_relate_btn_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+}
+
+package com.example.myproject.Fragment;
+
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+
+import com.example.myproject.R;
+import com.example.myproject.seek.GridViewAdapter;
+import com.example.myproject.seek.MyViewPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SeekFragment extends Fragment {
+    private ViewPager vp;
+    private RadioButton rb0,rb1,rb2;
+    private GridView gridView;
+
+    //适配器
+    private MyViewPagerAdapter myViewPagerAdapter;
+//    private GridViewAdapter gridViewAdapter;
+
+    private List<ImageView> mImageViews;
+//    private List<Object[]> gridview_datas = new ArrayList<Object[]>();
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
+
+    public SeekFragment() {
+    }
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    private void initData() {
+        //下面实例化ImageView的方法，和xml里面写一个ImageView一样，都是创建一个对象。
+        ImageView imageView1 = new ImageView(getActivity());
+        //给对象传入一个图片源
+        imageView1.setImageResource(R.drawable.test1);
+        ImageView imageView2 = new ImageView(getActivity());
+        //给对象传入一个图片源
+        imageView2.setImageResource(R.drawable.test2);
+        ImageView imageView3 = new ImageView(getActivity());
+        //给对象传入一个图片源
+        imageView3.setImageResource(R.drawable.test3);
+
+        //给图片列表对象创建空间
+        mImageViews = new ArrayList<>();
+        mImageViews.add(imageView1);
+        mImageViews.add(imageView2);
+        mImageViews.add(imageView3);
+
+        //viewpage监听页面滑动的方法
+        vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //根据显示图片下标，控制圆点的显示与否（注意，我圆点的数量写死了，需要增加图片，一定需要手动增加圆点）
+                if(position == 0){
+                    rb0.setChecked(true);
+                }
+                else if(position == 1){
+                    rb1.setChecked(true);
+                }
+                else {
+                    rb2.setChecked(true);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_seek, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        vp = view.findViewById(R.id.seek_vp);
+        rb0 = view.findViewById(R.id.seek_rb_0);
+        rb1 = view.findViewById(R.id.seek_rb_1);
+        rb2 = view.findViewById(R.id.seek_rb_2);
+//        gridView = view.findViewById(R.id.seek_gridView);
+
+        //生成图片（准备数据，放入图片列表中）
+        initData();
+
+        //图创建适配器
+        myViewPagerAdapter = new MyViewPagerAdapter(mImageViews);
+//        gridViewAdapter = new GridViewAdapter(gridview_datas,getActivity());
+
+
+        //设置Viewpager的适配器
+        vp.setAdapter(myViewPagerAdapter);
+
+        //设置gridview适配器
+//        gridView.setAdapter(gridViewAdapter);
+
+        //装载gridview数据(随机给的数据)
+//        for (int i = 0; i < 48; i++){
+//            gridview_datas.add(new Object[]{R.drawable.test1, "欧阳"+i, i , i*10});
+//
+//        }
+    }
+}
+
+
+package com.example.myproject.user;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.myproject.R;
+
+public class Set extends AppCompatActivity implements View.OnClickListener {
+    private Button back;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_set);
+        back = findViewById(R.id.user_set_btn_back);
+        back.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        switch (id){
+            case R.id.user_set_btn_back:
+                finish();
+                break;
+        }
+    }
+}
+
+package com.example.myproject.Fragment;
+
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.example.myproject.R;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link TreeFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class TreeFragment extends Fragment {
+
+
+
+
+
+
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public TreeFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment TreeFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static TreeFragment newInstance(String param1, String param2) {
+
+        TreeFragment fragment = new TreeFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.fragment_tree, container,false);
+
+        return view;
+    }
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+
+
+
+
+}
+
+package com.example.myproject.login;
+/**
+ * Created by littlecurl 2018/6/24
+ */
+public class User {
+    private String name;            //用户名
+    private String password;        //密码
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+}
+
+package com.example.myproject.user;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.Toast;
+
+import com.example.myproject.R;
+
+public class UserFeedback extends AppCompatActivity {
+
+    private RatingBar ratingBar;
+    private EditText editText;
+    private Button button,back;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_feedback);
+
+        //分别绑定 打星  反馈文本框   提交按钮
+        ratingBar = findViewById(R.id.user_feedback_star);
+        editText = findViewById(R.id.user_feedback_input);
+        button = findViewById(R.id.user_feedback_submit);
+        back = findViewById(R.id.user_feedback_btn_back);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //点击提交事件
+                Toast.makeText(getApplicationContext(),"提交成功",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                if(b){
+                    String s = Float.toString(v);
+                    Toast.makeText(getApplicationContext(),"点了"+v,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+    }
+}
+
+package com.example.myproject.Fragment;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.myproject.MainActivity;
+import com.example.myproject.R;
+import com.example.myproject.user.RelateApp;
+import com.example.myproject.user.Set;
+import com.example.myproject.user.UserFeedback;
+import com.example.myproject.user.UserMessage;
+
+
+public class UserFragment extends Fragment implements View.OnClickListener{
+    private Button feedback,phone,relate,set,message;
+
+
+
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    private String mParam1;
+    private String mParam2;
+
+    public UserFragment() {
+
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_user, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //一般在onViewCreated下，用view绑定按钮
+        feedback = view.findViewById(R.id.user_feedback);
+        phone = view.findViewById(R.id.user_phone);
+        relate = view.findViewById(R.id.user_relate);
+        set = view.findViewById(R.id.user_set);
+        message = view.findViewById(R.id.user_message);
+
+
+
+        //feedback监听事件
+        feedback.setOnClickListener(this);
+        phone.setOnClickListener(this);
+        relate.setOnClickListener(this);
+        set.setOnClickListener(this);
+        message.setOnClickListener(this);
+
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        Intent intent = null;
+        switch (id){
+            case R.id.user_feedback:
+                 intent = new Intent(getActivity(), UserFeedback.class);
+                 break;
+            case R.id.user_phone:
+                Toast.makeText(getActivity(),"400-161-9995",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.user_relate:
+                intent = new Intent(getActivity(), RelateApp.class);
+                break;
+            case R.id.user_set:
+                intent = new Intent(getActivity(), Set.class);
+                break;
+            case R.id.user_message:
+                intent = new Intent(getActivity(), UserMessage.class);
+                break;
+
+        }
+        if(intent != null){
+            startActivity(intent);
+        }
+
+    }
+}
+
+package com.example.myproject.user;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import com.example.myproject.R;
+
+public class UserMessage extends AppCompatActivity {
+    private Button back;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_user_message);
+
+        back = findViewById(R.id.user_message_btn_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+}
+<?xml version ="1.0" encoding ="utf-8"?><!--  Learn More about how to use App Actions: https://developer.android.com/guide/actions/index.html -->
+<actions>
+    <!--    Example Action -->
+    <!--    <action intentName="Intent name (actions.intent.*)"> -->
+    <!--        <action-display -->
+    <!--            icon="@mipmap/..." -->
+    <!--            labelTemplate="@array/..." /> -->
+    <!--        <fulfillment urlTemplate="Action content URI or URL"> -->
+    <!--            <parameter-mapping -->
+    <!--                intentParameter="Parameter name in Intent URI" -->
+    <!--                urlParameter="Parameter name in URL" /> -->
+    <!--        </fulfillment> -->
+    <!--    </action> -->
+</actions>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fcd3b8"
+    android:orientation="vertical"
+    tools:context=".heart.AddActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/add_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/add_back"/>
+        <Button
+            android:id="@+id/add_btn_yes"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/add_yes" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:background="@null"
+            android:hint="标题"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:gravity="left"
+                android:textColor="#000"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.Agreement"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="#D8D8D8">
+        <Button
+            android:id="@+id/login_agreement_cancel"
+            android:layout_marginLeft="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/login_agreement_cancel"/>
+        <TextView
+            android:id="@+id/main_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="用户注册及使用APP隐私协议"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="提示条款"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="您的信任对我们非常重要，我们深知个人信息对您的重要性，我们将按法律法规要求，采取相应安全保护措施，尽力保护您的个人信息安全可控。鉴于此，项目提供者（简称“我们”或“桥梁”）制定本《用户隐私政策》（下称“本政策”?或“本隐私权政策”）并提醒您:"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="本政策适用于桥梁提供的所有产品和服务。我们有可能根据未来信息处理情境的变化更新或修改本政策，在使用桥梁各项产品或服务前，请您务必仔细阅读并透彻理解本政策（包括更新或修改后的本政策），在确认充分理解并同意后使用相关产品或服务。一旦您开始使用桥梁各项产品或服务，即表示您已理解并同意本政策。如对本政策内容存在任何疑问、意见或建议，您可通过桥梁邮箱（2962402977@qq.com）与我们联系。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="在使用桥梁各项产品或服务前，请您务必仔细阅读并透彻理解本政策，特别是以粗体/粗体下划线标识的条款，您应重点阅读，在确认充分理解并同意后再开始使用。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="第一部分?定义"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+
+                android:text="个人信息：指以电子或者其他方式记录的能够单独或者与其他信息结合识别特定自然人身份或者反映特定自然人活动情况的各种信息。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="个人敏感信息：指包括身份证件号码、个人生物识别信息、银行账号、财产信息、行踪轨迹、交易信息、14岁以下（含）儿童信息等的个人信息（我们将在本隐私权政策中对具体个人敏感信息以粗体进行显著标识）。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="个人信息删除：指在实现日常业务功能所涉及的系统中去除个人信息的行为，使其保持不可被检索、访问的状态。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="第二部分?隐私权政策"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="本隐私权政策部分将帮助您了解以下内容："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="一、我们如何收集和使用您的信息"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+
+                android:text="（一）为您提供商品或服务信息展示"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（二） 为您提供收藏、关注与分享功能"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（三） 客服及争议处理"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（四） 为您提供评论、问答等信息公开发布功能"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（五） 为您提供安全保障"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（六） 为您提供其他附加服务"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（七）其他"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="二、本隐私权政策如何更新"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="50dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="一、?我们如何收集和使用您的信息"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="在您使用我们的产品及/或服务时，我们需要/可能需要收集和使用的您的个人信息包括如下两种："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="1、为实现向您提供我们产品及/或服务的基本功能，您须授权我们收集、使用的必要的信息。如您拒绝提供相应信息，您将无法正常使用我们的产品及/或服务；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="2、为实现向您提供我们产品及/或服务的附加功能，您可选择授权我们收集、使用的信息。如您拒绝提供，您将无法正常使用相关附加功能或无法达到我们拟达到的功能效果，但并不会影响您正常使用我们产品及/或服务的基本功能。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="您理解并同意："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="1、我们致力于打造多样的产品和服务以满足您的需求。因我们向您提供的产品和服务种类众多，且不同用户选择使用的具体产品/服务范围存在差异，相应的，基本/附加功能及收集使用的个人信息类型、范围等会有所区别，请以具体的产品/服务功能为准；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="2、为给您带来更好的产品和服务体验，我们在持续努力改进我们的技术，随之我们可能会不时推出新的或优化后的功能，可能需要收集、使用新的个人信息或变更个人信息使用目的或方式。对此，我们将通过更新本政策、弹窗、页面提示等方式另行向您说明对应信息的收集目的、范围及使用方式，并为您提供自主选择同意的方式，且在征得您明示同意后收集、使用。在此过程中，如果您有任何疑问、意见或建议的，您可通过桥梁邮箱（123456789@qq.com）与我们联系，我们会尽快为您作出解答。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="3、为了实现用户在线咨询消息提醒推送需求，我们会在前台和后台状态下获取您的设备相关信息（包括设备型号、唯一设备标识符，如?IMEI?/?Android?ID?/?IDFA?/?OPENUDID?/?GUID?/?IMSI?信息、设备?MAC?地址），读取已安装包名列表。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="4、应用在后台状态下通过三方相关SDK等方式获取用户设备相关信息（包括设备型号、唯一设备标识符，如?IMEI?/?Android?ID?/?IDFA?/?OPENUDID?/?GUID?/?IMSI?信息、设备?MAC?地址），读取已安装包名列表，涉及用户注册、消息聊天、推送相关。服务于我们的用户推送功能、用户注册、广告推广相关功能。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="我们会为实现本政策下述的各项功能，收集和使用您的个人信息："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="（一）为您提供商品或服务信息展示"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="在您使用我们服务过程中，为识别账号异常状态、了解产品适配性、向您提供更契合您需求的页面展示和搜索结果，我们可能会自动收集您的使用情况并存储为网络日志信息，包括："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="设备信息：我们会根据您在软件安装及/或使用中的具体操作，接收并记录您所使用的设备相关信息（包括设备型号、唯一设备标识符，如?IMEI?/?Android?ID?/?IDFA?/?OPENUDID?/?GUID?/?IMSI?信息、设备?MAC?地址、操作系统类型及型号、屏幕分辨率、电信运营商、软件安装列表、软件版本号、系统语言。）、设备所在位置相关信息（包括您授权的GPS位置以及WLAN接入点、蓝牙和基站等传感器信息），读取已安装包名列表。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="服务日志信息：当您使用我们的网站或客户端提供的产品或服务时，我们会自动收集您对我们服务的详细使用情况，作为服务日志保存，包括浏览、点击查看、搜索查询、收藏、交易、售后、关注分享信息、发布信息，以及IP地址、浏览器类型、电信运营商、访问日期和时间。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="请注意，单独的设备信息、服务日志信息是无法识别特定自然人身份的信息。如果我们将这类非个人信息与其他信息结合用于识别特定自然人身份，或者将其与个人信息结合使用，则在结合使用期间，这类非个人信息将被视为个人信息，除取得您授权或法律法规另有规定外，我们会将这类信息做匿名化、去标识化处理。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="此外，我们也会为了不断改进和优化上述的功能来使用您的上述信息。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="（二）?为您提供收藏、关注与分享功能"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="在您浏览我们客户端的过程中，您可以选择对感兴趣的商品及/或服务进行收藏，在您使用上述功能的过程中，我们会收集包括您的收藏的记录、分享历史在内的服务日志信息用于实现上述功能及其他我们明确告知的目的。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="（三）?客服及争议处理"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="当您与我们联系或提出售中、售后争议纠纷处理申请时，为了保障您的账户及系统安全，我们需要您提供必要的个人信息以核验您的身份。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="为便于与您联系、尽快帮助您解决问题或记录相关问题的处理方案及结果，我们可能会保存您与我们的通信/通话记录及相关内容（包括账号信息、订单信息、您为了证明相关事实提供的其他信息，或您留下的联系方式信息），如果您针对具体订单进行咨询、投诉或提供建议的，我们会使用您的账号信息和订单信息。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="（四）?为您提供评论、问答等信息公开发布功能"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="您可通过我们为您提供的评论、分享及其他信息发布功能公开发布信息，包括可发布的图文、发表评价及问答内容相关信息。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="请注意，您公开发布的信息中可能会涉及您或他人的个人信息甚至个人敏感信息，如您在评价时选择上传包含个人信息的图片。请您更加谨慎地考虑，是否在使用我们的服务时共享甚至公开分享相关信息。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="（五）?为您提供安全保障"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="为提高您使用我们及我们关联公司、合作伙伴提供服务的安全性，保护您或其他用户或公众的人身财产安全免遭侵害，更好地预防钓鱼网站、欺诈、网络漏洞、计算机病毒、网络攻击、网络侵入等安全风险，更准确地识别违反法律法规或桥梁相关协议规则的情况，我们可能使用或整合您的会员信息、交易信息、设备信息、服务日志信息取得您授权或依据法律共享的信息，来综合判断您账户及交易风险、进行身份验证、检测及防范安全事件，并依法采取必要的记录、审计、分析、处置措施。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="（六）?为您提供其他附加服务"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="为向您提供更便捷、更优质的产品及/或服务，努力提升您的体验，我们在向您提供的以下附加服务中可能会收集和使用您的个人信息。如果您不提供这些信息，不会影响您使用桥梁的浏览、搜索、购买等基本服务，但您可能无法获得这些附加服务给您带来的用户体验。这些附加服务包括："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="1、基于相机/摄像头的附加服务：您可在开启相机/摄像头权限后使用该功能咨询师视频互动，拍摄照片用于评价、分享，以及特定场景下经您授权的人脸识别等功能。当您使用该附加功能进行人脸识别时我们会收集您的面部特征，且严格在经您授权同意的范围内使用，未来如我们拟使用您的面部信息为您提供其他产品及/或服务功能的，我们会再次与您确认。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="2、基于相册（图片库/视频库）的图片/视频访问及上传的附加服务：您可在开启相册权限后使用该功能上传您的照片/图片/视频，以实现更换头像、发表评论/分享等功能。我们可能会通过您所上传的照片/图片来识别您需要购买的服务，或使用包含您所上传照片或图片的评论信息。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="3、基于麦克风的语音技术相关附加服务：您可在开启麦克风权限后使用麦克风实现咨询互动功能。请您知晓，即使您已同意开启麦克风权限，我们也仅会在您主动点击客户端内麦克风图标或录制视频时通过麦克风获取语音信息。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="您理解并同意，上述附加服务可能需要您在您的设备中开启您的位置信息?（地理位置）、摄像头（相机）、相册（图片库）、麦克风（语音）的访问权限，以实现这些权限所涉及信息的收集和使用。请您注意，您开启任一权限即代表您授权我们可以收集和使用相关个人信息来为您提供对应服务，您一旦关闭任一权限即代表您取消了授权，我们将不再基于对应权限继续收集和使用相关个人信息，也无法为您提供该权限所对应的服务。但是，您关闭权限的决定不会影响此前基于您的授权所进行的信息收集及使用。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="（七）其他"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="1、若您提供的信息中含有其他用户的个人信息，在向桥梁提供这些个人信息之前，您需确保您已经取得合法的授权。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="2、若我们将信息用于本政策未载明的其他用途，或者将基于特定目的收集而来的信息用于其他目的，或者我们主动从第三方处获取您的个人信息，均会事先获得您的同意。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="若我们从第三方处间接获取您的信息的，我们会在收集前明确以书面形式要求该第三方在已依法取得您同意后收集个人信息，并向您告知共享的信息内容，且涉及敏感信息的在提供给我们使用前需经过您的明确确认，要求第三方对个人信息来源的合法性和合规性作出承诺，如第三方有违反行为的，我们会明确要求对方承担相应法律责任；同时，我们的专业安全团队对个人信息会进行安全加固（包括敏感信息报备、敏感信息加密存储、访问权限控制等）。我们会使用不低于我们对自身用户个人信息同等的保护手段与措施对间接获取的个人信息进行保护。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="3、征得授权同意的例外"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="您充分理解并同意，我们在以下情况下收集、使用您的个人信息无需您的授权同意，且我们可能不会响应您提出的更正/修改、删除、注销、撤回同意、索取信息的请求："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（1）与国家安全、国防安全有关的；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（2）与公共安全、公共卫生、重大公共利益有关的；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（3）与犯罪侦查、起诉、审判和判决执行等司法或行政执法有关的；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（4）出于维护您或其他个人的生命、财产等重大合法权益但又很难得到本人同意的；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（5）您自行向社会公众公开的个人信息；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（6）从合法公开披露的信息中收集个人信息的，如合法的新闻报道、政府信息公开等渠道。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（7）根据与您签订和履行相关协议或其他书面文件所必需的；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（8）用于维护所提供的产品及/或服务的安全稳定运行所必需的，例如发现、处置产品及/或服务的故障；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（9）为合法的新闻报道所必需的"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（10）学术研究机构基于公共利益开展统计或学术研究所必要，且对外提供学术研究或描述的结果时，对结果中所包含的个人信息进行去标识化处理的；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="（11）法律法规规定的其他情形。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="请知悉，根据适用的法律，若我们对个人信息采取技术措施和其他必要措施进行处理，使得数据接收方无法重新识别特定个人且不能复原，或我们可能会对收集的信息进行去标识化地研究、统计分析和预测，用于改善桥梁的内容和布局，为商业决策提供产品或服务支撑，以及改进我们的产品和服务（包括使用匿名数据进行机器学习或模型算法训练），则此类处理后数据的使用无需另行向您通知并征得您的同意。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="4、如我们停止运营桥梁产品或服务，我们将及时停止继续收集您个人信息的活动，将停止运营的通知以逐一送达或公告的形式通知您，并对我们所持有的与已关停业务相关的个人信息进行删除或匿名化处理。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:text="二、本隐私权政策如何更新"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="我们的隐私权政策可能变更。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="未经您明确同意，我们不会限制您按照本隐私权政策所应享有的权利。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="对于重大变更，我们还会提供更为显著的通知（包括我们会通过桥梁公示的方式进行通知甚至向您提供弹窗提示）。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="本政策所指的重大变更包括但不限于："/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="1、我们的服务模式发生重大变化。如处理个人信息的目的、处理的个人信息类型、个人信息的使用方式等；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="2、我们在控制权等方面发生重大变化。如并购重组等引起的信息控制者变更等；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="3、个人信息共享、转让或公开披露的主要对象发生变化；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="4、您参与个人信息处理方面的权利及其行使方式发生重大变化；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="5、我们负责处理个人信息安全的责任部门、联络方式及投诉渠道发生变化；"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="6、个人信息安全影响评估报告表明存在高风险。"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="20dp"
+                android:textColor="#000"
+                android:text="如果您对我们的服务不满意，特别是您认为我们的个人信息处理行为损害了您的合法权益，您还可以通过向被告住所地有管辖权的法院提起诉讼来寻求解决方案。"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".heart.item">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文本标题"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#000"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:text="2022/1/1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="12:00"
+            android:paddingRight="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+            android:lines="2"
+            android:ellipsize="end"/>
+    </LinearLayout>
+</LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login">
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_top"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="20dp"
+            android:orientation="vertical"
+            android:background="@drawable/login_edittext">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/login_user"/>
+                <EditText
+                    android:id="@+id/xuehao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="学号"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/login_password"/>
+                <EditText
+                    android:id="@+id/mima"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:inputType="textPassword"
+                    android:hint="密码"
+                    android:singleLine="true"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/login_cb_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="同意桥梁"
+                        android:textColor="#8C8A8A"/>
+                    <Button
+                        android:id="@+id/login_bt_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:background="#00FFFFFF"
+                        android:text="用户使用协议"
+                        android:textColor="#768DFF"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="、"
+                        android:textColor="#8C8A8A"/>
+                    <Button
+                        android:id="@+id/login_bt_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:background="#00FFFFFF"
+                        android:text="隐私保护协议"
+                        android:textColor="#768DFF"/>
+                </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/login_bt_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/login_denlu"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="登录"/>
+
+            <Button
+                android:id="@+id/login_bt_register"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/login_denlu"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:text="注册"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@id/center"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/login_logo" />
+
+    <LinearLayout
+        android:id="@+id/foot"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="─────其他登录方式─────"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+
+                android:background="#00FFFFFF"
+                android:scaleType="centerCrop"
+                android:src="@drawable/login_qq"/>
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:background="#00ffffff"
+                android:scaleType="centerCrop"
+                android:src="@drawable/login_wechat"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/load"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    <TextView-->
+<!--        android:id="@+id/main_tv_title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="#858585"-->
+<!--        android:gravity="center"-->
+<!--        android:text="桥  梁"-->
+<!--        android:textColor="#FF87BF"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold" />-->
+    <RadioGroup
+        android:id="@+id/main_rg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#DFD5E0"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp">
+
+
+<!-- 相同属性放在了上面，不同属性放在下面 -->
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:drawableTop="@drawable/mmain_seek"
+            android:id="@+id/main_rb_seek"
+            android:text="咨询"
+            android:checked="true"/>
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_tree"
+            android:text="树洞"
+            android:drawableTop="@drawable/mmain_tree" />
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_heart"
+            android:text="心灵锁"
+            android:drawableTop="@drawable/mmain_heart"/>
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_information"
+            android:text="消息"
+            android:drawableTop="@drawable/mmain_information" />
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_user"
+            android:text="个人"
+            android:drawableTop="@drawable/mmain_user" />
+    </RadioGroup>
+    <!-- 中间部分使用布局进行占位，会去使用Fragment替换这块布局-->
+    <LinearLayout
+        android:id="@+id/main_layout_center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_rg"
+        android:orientation="vertical" />
+
+
+
+</RelativeLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.Regester">
+
+    <RelativeLayout
+        android:id="@+id/rl_registeractivity_top"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#C5BDFF">
+
+        <ImageView
+            android:id="@+id/iv_registeractivity_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/mmain_user"
+            android:clickable="true"
+            android:onClick="onClick" />
+
+        <TextView
+            android:id="@+id/tv_registeractivity_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/iv_registeractivity_back"
+            android:text="注册"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_registeractivity_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/rl_registeractivity_top"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        >
+        <!-- 第一个文本编辑框  输入用户名 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_registeractivity_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="用户名："/>
+            <EditText
+                android:id="@+id/et_registeractivity_username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请输入用户名"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                />
+        </LinearLayout>
+        <!-- 第二个文本编辑框  输入密码 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_registeractivity_password1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密    码："/>
+            <EditText
+                android:id="@+id/et_registeractivity_password1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:inputType="textPassword"
+                android:hint="请输入密码" />
+        </LinearLayout>
+        <!-- 第三个文本编辑框  再次输入密码 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_registeractivity_password2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="密    码："/>
+            <EditText
+                android:id="@+id/et_registeractivity_password2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请再次输入密码"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:inputType="textPassword"
+                />
+        </LinearLayout>
+        <!-- 验证码部分 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+            <!-- 第四个文本编辑框  输入验证码 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_registeractivity_phoneCodes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="验证码："/>
+                <EditText
+                    android:id="@+id/et_registeractivity_phoneCodes"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:hint="请输入4位验证码" />
+
+                <ImageView
+                    android:id="@+id/iv_registeractivity_showCode"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1.5"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:layout_marginTop="-10dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <!-- 注册按钮 -->
+        <Button
+            android:id="@+id/bt_registeractivity_register"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:background="#2D4D9E"
+            android:textColor="#fff"
+            android:text="注册"
+            android:onClick="onClick"
+            android:layout_marginTop="40dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/rl_registeractivity_bottom"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="注册即代表同意《用户使用协议》、《隐私保护协议》" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.UserFeedback"
+    android:background="#EAE7FF">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/user_feedback_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/add_back"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingTop="10dp"
+            android:text="意见反馈:" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/user_feedback_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:gravity="left"
+                    android:hint="请输入你遇到的问题或建议，您的反馈将帮助我们快速成长。"
+                    android:textColor="#000" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请对该app打分："/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+            <RatingBar
+                android:id="@+id/user_feedback_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/user_feedback_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="提交" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.UserMessage"
+    android:orientation="vertical"
+    android:background="#EFEFEF">
+    <RelativeLayout
+        android:id="@+id/user_message_back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/user_message_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/add_back"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:text="基本资料"
+            android:textSize="40dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="头像设置"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="账号/学号"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="昵称"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="性别"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="生日"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="简介"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login">
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_top"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/user_relate_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/add_back"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+
+        android:paddingTop="40dp"
+        android:paddingBottom="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_edittext"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="你好，我是“桥梁”的开发人员"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="很抱歉技术有限，有很多想法没有实现"/>
+
+
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《2022年国民抑郁症蓝皮书》显示"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我国患抑郁症人数9500万"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="大家一直把负面情绪埋在心里"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="这些情绪需要被正视和表达"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="负面情绪的存在本来就是正常且普遍的"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所以“桥梁”出现了"/>
+            <TextView
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="希望能够帮助到你"/>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignTop="@id/center"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/login_logo" />
+
+    <LinearLayout
+        android:id="@+id/foot"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前版本：V1.0"
+            android:textColor="#000"/>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user.Set"
+    android:background="#F3F3F3">
+
+    <RelativeLayout
+        android:id="@+id/user_set_back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/user_set_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/add_back"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:text="设置"
+            android:textSize="40dp" />
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_set_back"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="账号相关"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="账号设置"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="清理聊天记录"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="关闭个性化推荐"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="辅助功能"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="非wifi下无图省流量"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="聊天背景"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="清理内存"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:text="退出当前账号"
+        android:textAlignment="center"
+        android:textColor="#FF0000" />
+
+</RelativeLayout>
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myproject">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/statusBar">
+        <activity
+            android:name=".user.UserMessage"
+            android:exported="false" />
+        <activity
+            android:name=".user.Set"
+            android:exported="false" />
+        <activity
+            android:name=".user.RelateApp"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".heart.AddActivity"
+            android:exported="false"
+            android:label="添加记事本" />
+        <activity
+            android:name=".login.Agreement"
+            android:exported="false" />
+        <activity
+            android:name=".heart.item"
+            android:exported="false" /> <!-- 透明状态栏 -->
+        <!-- android:theme="@style/statusBar" -->
+        <!-- 去掉状态栏 -->
+        <!-- android:theme="@style/TranslucentTheme" -->
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/actions" />
+
+        <activity
+            android:name=".login.Regester"
+            android:exported="false" />
+        <activity
+            android:name=".Mmain"
+            android:exported="false" />
+        <activity
+            android:name=".login.Login"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.SeekFragment"
+    android:orientation="vertical"
+    android:background="#DADADA">
+    <LinearLayout
+        android:id="@+id/seek_ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#86C5BDFF">
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:background="@drawable/search"
+            android:id="@+id/seek_linear_searchitem">
+
+            <EditText
+                android:id="@+id/seek_et_searchtext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:hint="搜索倾听者"
+                android:background="@null"
+                android:textSize="18sp"
+                android:drawableLeft="@mipmap/search"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#BFBFBF"/>
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="搜索"
+                android:textSize="18sp"
+                android:background="@drawable/search"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/seek_vp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <RadioGroup
+            android:id="@+id/seek_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_alignBottom="@+id/seek_vp">
+            <RadioButton
+                android:id="@+id/seek_rb_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/seek_rb_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/seek_rb_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/seek_gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="20dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="20dp" />
+
+
+
+
+</LinearLayout>
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.UserFragment"
+    android:orientation="vertical"
+    android:background="@drawable/login">
+
+<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/hello_blank_fragment" />-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:id="@+id/user_head"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            android:background="#CD6E6E"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户id"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/user_head"/>
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#fff">
+        <Button
+            android:id="@+id/zixun"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="咨询       10"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/huoban"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/zixun"
+            android:textSize="20dp"
+            android:text="好友       11"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/liuyan"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/huoban"
+            android:textSize="20dp"
+            android:text="留言       12"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/shouchang"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/liuyan"
+            android:textSize="20dp"
+            android:text="收藏       13"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/dianzan"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="点赞       14"
+            android:background="#fff"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#00E3BEBE">
+
+            </Button>
+            <Button
+                android:id="@+id/user_message"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="基本信息"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+            <Button
+                android:id="@+id/user_set"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="设置"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+            <Button
+                android:id="@+id/user_relate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="关于“桥梁”"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+
+            <Button
+                android:id="@+id/user_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="意见反馈"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+            <Button
+                android:id="@+id/user_phone"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="免费心理危机咨询热线"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="150dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="#D6D6D6">
+        <ImageView
+            android:id="@+id/seek_teacher_head"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@android:drawable/ic_menu_myplaces"/>
+        <TextView
+            android:id="@+id/seek_teacher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="欧阳锋"
+            android:textColor="#000"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#C3C1C1"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="咨询次数："
+                android:textSize="10dp"/>
+            <TextView
+                android:id="@+id/seek_teacher_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="354"
+                android:textSize="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="好评："
+                android:textSize="10dp"/>
+            <TextView
+                android:id="@+id/seek_teacher_good"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100.0"
+                android:textSize="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="%"
+                android:textSize="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textSize="20dp"
+                android:textColor="#FF0000"/>
+            <TextView
+                android:id="@+id/seek_teacher_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="20dp"
+                android:textColor="#FF0000"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="个人简介>"
+                android:textColor="#00BCD4"
+                android:textSize="10dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

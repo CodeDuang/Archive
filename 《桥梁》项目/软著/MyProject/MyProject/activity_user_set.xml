@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user.Set"
+    android:background="#F3F3F3">
+
+    <RelativeLayout
+        android:id="@+id/user_set_back"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/user_set_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/add_back"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:text="设置"
+            android:textSize="40dp" />
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_set_back"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="账号相关"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="账号设置"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="清理聊天记录"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="关闭个性化推荐"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:text="辅助功能"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="非wifi下无图省流量"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="聊天背景"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:text="清理内存"
+            android:textAlignment="textStart"
+            android:drawableRight="@mipmap/user_turnright"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:text="退出当前账号"
+        android:textAlignment="center"
+        android:textColor="#FF0000" />
+
+</RelativeLayout>

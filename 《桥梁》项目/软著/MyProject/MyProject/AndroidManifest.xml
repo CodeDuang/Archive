@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myproject">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/statusBar">
+        <activity
+            android:name=".user.UserMessage"
+            android:exported="false" />
+        <activity
+            android:name=".user.Set"
+            android:exported="false" />
+        <activity
+            android:name=".user.RelateApp"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserFeedback"
+            android:exported="false" />
+        <activity
+            android:name=".heart.AddActivity"
+            android:exported="false"
+            android:label="添加记事本" />
+        <activity
+            android:name=".login.Agreement"
+            android:exported="false" />
+        <activity
+            android:name=".heart.item"
+            android:exported="false" /> <!-- 透明状态栏 -->
+        <!-- android:theme="@style/statusBar" -->
+        <!-- 去掉状态栏 -->
+        <!-- android:theme="@style/TranslucentTheme" -->
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/actions" />
+
+        <activity
+            android:name=".login.Regester"
+            android:exported="false" />
+        <activity
+            android:name=".Mmain"
+            android:exported="false" />
+        <activity
+            android:name=".login.Login"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

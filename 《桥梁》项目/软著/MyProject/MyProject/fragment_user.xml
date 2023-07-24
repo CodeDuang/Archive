@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.UserFragment"
+    android:orientation="vertical"
+    android:background="@drawable/login">
+
+<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="@string/hello_blank_fragment" />-->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ImageView
+            android:id="@+id/user_head"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+
+            android:background="#CD6E6E"
+            android:layout_centerInParent="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户id"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/user_head"/>
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#fff">
+        <Button
+            android:id="@+id/zixun"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="咨询       10"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/huoban"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/zixun"
+            android:textSize="20dp"
+            android:text="好友       11"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/liuyan"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/huoban"
+            android:textSize="20dp"
+            android:text="留言       12"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/shouchang"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/liuyan"
+            android:textSize="20dp"
+            android:text="收藏       13"
+            android:background="#fff"/>
+        <Button
+            android:id="@+id/dianzan"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:text="点赞       14"
+            android:background="#fff"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#00E3BEBE">
+
+            </Button>
+            <Button
+                android:id="@+id/user_message"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="基本信息"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+            <Button
+                android:id="@+id/user_set"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="设置"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+            <Button
+                android:id="@+id/user_relate"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="关于“桥梁”"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+
+            <Button
+                android:id="@+id/user_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="意见反馈"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+            <Button
+                android:id="@+id/user_phone"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:drawableLeft="@mipmap/mmain_user2"
+                android:text="免费心理危机咨询热线"
+                android:textAlignment="textStart"
+                android:drawableRight="@mipmap/user_turnright"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

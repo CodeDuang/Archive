@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.SeekFragment"
+    android:orientation="vertical"
+    android:background="#DADADA">
+    <LinearLayout
+        android:id="@+id/seek_ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#86C5BDFF">
+        <LinearLayout
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:layout_margin="10dp"
+            android:orientation="horizontal"
+            android:background="@drawable/search"
+            android:id="@+id/seek_linear_searchitem">
+
+            <EditText
+                android:id="@+id/seek_et_searchtext"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:hint="搜索倾听者"
+                android:background="@null"
+                android:textSize="18sp"
+                android:drawableLeft="@mipmap/search"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#BFBFBF"/>
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="搜索"
+                android:textSize="18sp"
+                android:background="@drawable/search"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/seek_vp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <RadioGroup
+            android:id="@+id/seek_rg"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_alignBottom="@+id/seek_vp">
+            <RadioButton
+                android:id="@+id/seek_rb_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"/>
+            <RadioButton
+                android:id="@+id/seek_rb_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RadioButton
+                android:id="@+id/seek_rb_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RadioGroup>
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/seek_gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:horizontalSpacing="20dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="20dp" />
+
+
+
+
+</LinearLayout>

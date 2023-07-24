@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    <TextView-->
+<!--        android:id="@+id/main_tv_title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="#858585"-->
+<!--        android:gravity="center"-->
+<!--        android:text="桥  梁"-->
+<!--        android:textColor="#FF87BF"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold" />-->
+    <RadioGroup
+        android:id="@+id/main_rg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#DFD5E0"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp">
+
+
+<!-- 相同属性放在了上面，不同属性放在下面 -->
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:drawableTop="@drawable/mmain_seek"
+            android:id="@+id/main_rb_seek"
+            android:text="咨询"
+            android:checked="true"/>
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_tree"
+            android:text="树洞"
+            android:drawableTop="@drawable/mmain_tree" />
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_heart"
+            android:text="心灵锁"
+            android:drawableTop="@drawable/mmain_heart"/>
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_information"
+            android:text="消息"
+            android:drawableTop="@drawable/mmain_information" />
+        <RadioButton
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:textColor="@drawable/mmain_textcolor"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:button="@null"
+
+            android:id="@+id/main_rb_user"
+            android:text="个人"
+            android:drawableTop="@drawable/mmain_user" />
+    </RadioGroup>
+    <!-- 中间部分使用布局进行占位，会去使用Fragment替换这块布局-->
+    <LinearLayout
+        android:id="@+id/main_layout_center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_rg"
+        android:orientation="vertical" />
+
+
+
+</RelativeLayout>
