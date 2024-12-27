@@ -1,0 +1,46 @@
+Stable Channel Changelog
+
+Build 230912
+·Solved the problem of incomplete window display
+·Implemented parallel processing of data
+·Fixed menu functionality
+
+Build 230701
+·Fixed an issue where clicking on menu options did not reflect certain options
+·Solved the issue of cache not being released when switching pages
+·Redraw button position
+
+Build 230614
+·Improved layout settings
+·Fixed the issue of flashing
+·Optimized performance
+
+Build 230602
+·Change static to dynamic modification of chip data
+·Dynamic extraction of report content
+
+
+Build 230521
+·Connect the report page to the main page
+·Implemented visual display of chip data
+
+
+Build 230501
+·Redeveloped UI
+·Designed the positions of buttons and text boxes
+·Prompt text has been provided for the usage process
+·Completed the drawing of the report page
+
+
+Rendering
+·Provide chip side channel information analysis function
+·Provide security detection function for layout
+·Provide detection and analysis of hardware trojans
+·Provide the function of injecting faults into chips to test performance
+·Provide the function of testing the logic of the chip
+
+
+API
+·Wrote about the interface for chip data processing and display
+·Completed data simulation of chip files
+·Realize real-time display of data based on chip side channel information

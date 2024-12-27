@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>保存.png</file>
+    <file>启动.png</file>
+    <file>曲线.png</file>
+    <file>停止.png</file>
+    <file>文件夹.png</file>
+    <file>暂停.png</file>
+  </qresource>
+</RCC>

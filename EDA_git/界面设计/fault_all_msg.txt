@@ -1,0 +1,1 @@
+fetch rg_gc[2] 3 clk 13 0 串行阻抗故障 1 198000 1 fetch rg_gc[1] 2 clk 12 0 电磁故障 1 198000 1 fetch rg_gc[0] 1 clk 11 0 电磁故障 1 198000 1 fetch rg_gc[2] 3 clk 13 0 开短路故障 1 346000 1 4 10
