@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>733</width>
+    <height>622</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0,52,48,230);
+</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string>大数模运算</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string>模：</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border: 3px solid rgb(230, 231, 197);
+background-color: rgb(255, 255, 255);
+</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string>大数1：</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="textEdit_3">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border: 3px solid rgb(230, 231, 197);
+background-color: rgb(255, 255, 255);
+</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string>大数2：</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+border: 3px solid rgb(230, 231, 197);
+background-color: rgb(255, 255, 255);
+</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="minimumSize">
+         <size>
+          <width>175</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_5{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_5:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>模加</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="minimumSize">
+         <size>
+          <width>175</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_6{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_6:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>模减</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="minimumSize">
+         <size>
+          <width>175</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_7{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_7:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>模乘</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="minimumSize">
+         <size>
+          <width>175</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_8{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_8:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>模除</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="minimumSize">
+         <size>
+          <width>175</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_9{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_9:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>模逆</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_12">
+        <property name="minimumSize">
+         <size>
+          <width>175</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_12{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_12:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>模幂</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="textEdit_2">
+      <property name="styleSheet">
+       <string notr="true">border-radius: 10px;
+border: 3px solid rgb(230, 231, 197);
+background-color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="placeholderText">
+       <string>运算结果在这里</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>733</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <widget class="QMenu" name="menuFile_Properties">
+     <property name="title">
+      <string>File Properties</string>
+     </property>
+     <addaction name="actionRemove_BOM"/>
+     <addaction name="actionCode_UTF_8"/>
+    </widget>
+    <addaction name="menuFile_Properties"/>
+    <addaction name="action"/>
+    <addaction name="separator"/>
+    <addaction name="actionPower_saving_mode"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>视图</string>
+    </property>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+    <addaction name="action_5"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>设置</string>
+    </property>
+    <addaction name="actionSelect_All"/>
+    <addaction name="actionBug_submit"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>界面跳转</string>
+    </property>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>大数运算单元</string>
+     </property>
+     <addaction name="action_9"/>
+     <addaction name="action_10"/>
+     <addaction name="action_11"/>
+    </widget>
+    <addaction name="action_6"/>
+    <addaction name="action_7"/>
+    <addaction name="menu_5"/>
+    <addaction name="action_12"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>导航</string>
+    </property>
+    <addaction name="action_13"/>
+   </widget>
+   <widget class="QMenu" name="menu_7">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="action_2"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_6"/>
+   <addaction name="menu_7"/>
+  </widget>
+  <action name="actionRemove_BOM">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Remove BOM</string>
+   </property>
+  </action>
+  <action name="actionCode_UTF_8">
+   <property name="text">
+    <string>Code:UTF-8</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actionPower_saving_mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Power saving mode</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>最小化</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>最大化</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>还原窗口</string>
+   </property>
+  </action>
+  <action name="actionSelect_All">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Select All
+</string>
+   </property>
+  </action>
+  <action name="actionBug_submit">
+   <property name="text">
+    <string>Bug submit</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>哈希函数算子</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>随机数生成</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>大数逻辑运算</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>大数算数运算</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>大数模运算</string>
+   </property>
+  </action>
+  <action name="action_13">
+   <property name="text">
+    <string>返回</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>椭圆曲线算子</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>帮助文档</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

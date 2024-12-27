@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1186</width>
+    <height>708</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0, 52, 48, 250);</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_2{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_2:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>哈希函数算子使用指南</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>随机数生成使用指南</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_5{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_5:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>大数运算单元使用指南</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_8{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_8:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>椭圆曲线算子使用指南</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>哈希函数算子使用指南</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="currentIndex">
+         <number>3</number>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>哈希函数算子</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;哈希函数算子界面由：函数算子选择、加密对象、加密结果三个部分组成，如下图所示：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-6.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;关于函数算子的选择，可以点击下拉框选择对应的函数算子，有：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;MD5&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;SHA-256&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;HMAC&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;三种，如下图：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-7.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;选择了对应的函数算作后，就可以选择加密对象了，本系统提供两种加密对象，一种是直接输入加密字符串，对文本内容进行加密内容，一种是针对文件进行加密，需要选择文件路径进行读取文件，然后加密，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-8.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-9.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;对于文本加密只需要输入文本内容在输入框中，再点击“加密”按钮即可对输入的文本进行加密，对于文件加密，需要点击“&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;…&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;”按钮选中文件，然后点击“加密”按钮，就可针对文件进行加密，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-90.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-91.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;以上就是加密的操作方式，接下来展示剩下两种函数算子的加密结果：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-92.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-93.png&quot; /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>随机数生成</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;对于随机数生成界面，由左边的预览框和右边的操作栏所组成，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-1.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;首先是选择读取随机数的设备，通过右边设备名称下拉框中选取，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-2.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;选择好随机数读取的设备后，就可以选择需要读取的随机数长度了，考虑到随机数长度可能很大，本系统读取的随机数都自动转为十六进制，以方便存储，在“需要读出的十六进制数”处填写需要读取的随机数数字与单位，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-3.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;确定好了读取的随机数大小后，点击“读取”按钮即可读取随机数了，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-4.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;左边可以预览读取的随机数，如果想要清空重新读取，可以点击“清空”按钮，如果想要下载成文档，可以点击“下载”按钮，即可保存到本地，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-5.png&quot; /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_3">
+         <attribute name="title">
+          <string>大数运算单元</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_3">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;对于该功能，点击对应图标将进入导航窗口，导航窗口包括：大数逻辑算法、大数算术算法、大数模运算，三个按钮对应不同的功能模块，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-1.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;首先，进入大数逻辑算法功能模块，点击“大数逻辑算法”按钮，即可进入该功能模块，大数逻辑运算模块包括：大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、运算按钮区、运算结果，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-2.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;需要注意的是，该功能统一使用&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;16&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;进制数进行运算，所以是可以输入&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;a-f&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;表示的，如果出现其它字母，系统将会弹窗提醒用户，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-3.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;完成大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;的输入后，可以点击“异或运算”按钮，将两个大数进行异或运算，结果会显示在结果框中，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-4.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;也可以点击“或运算”按钮，将两个大数进行或运算，结果会显示在结果框中，如下图：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-5.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;也可以点击“与运算”按钮，将两个大数进行与运算，结果会显示在结果框中，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-6.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;以上就是大数逻辑算法的全部功能，接下来退回大数运算导航栏，点击“大数算术算法”按钮，进入大数算术算法功能模块，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-7.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;大数算术运算功能模块与大数逻辑算法功能模块页面相似，操作逻辑也一样，不过需要注意的是，大数算术运算需要在大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;两个输入框中输入&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;10&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;进制数才可以进行运算，否则就会弹窗提醒，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-8.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;首先输入大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;的内容，然后点击“大数加法”按钮，即可在结果框得到对应的运算结果，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-9.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;大数减法也是同样的步骤，输入大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;的内容，然后点击“大数减法”按钮，即可在结果框得到对应的运算结果，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-90.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;大数乘法也是同样的步骤，输入大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;的内容，然后点击“大数乘法”按钮，即可在结果框得到对应的运算结果，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-91.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;大数除法也是同样的步骤，输入大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和大数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;的内容，然后点击“大数乘法”按钮，即可在结果框得到对应的运算结果，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-92.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;以上就是大数算术算法功能模块的全部功能，接下来退出该页面到导航页面，点击“大数模运算”按钮，进入大数模运算功能模块，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-93.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;该页面相对于之前几个页面，多了一个模输入栏，其余操作都一样，下面几个图将展示各个按钮的功能：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-94.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-95.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-大数运算/help-4-99.png&quot; /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_4">
+         <attribute name="title">
+          <string>椭圆曲线算子</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;椭圆曲线算子界面主要由明文框、加密结果框、加密解密按钮所组成，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-94.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;对于需要加密的明文，输入到明文框，再点击加密按钮即可，注意明文必须为&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;ascii&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;编码字符，当用户输入其它字符时，系统会弹窗告诉用户输入错误，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-95.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;输入正确的明文后，点击加密按钮，即可使用椭圆曲线算子，生成对应的加密字符串，如下图：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-96.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;注意，生成的加密结果并不固定，如下图就与上图明文相同，但是加密结果不同：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-97.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;虽然加密结果有很多个可能，但是每个加密结果，都可以通过解密按钮，还原为真正的明文，如下图：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-98.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-99.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-990.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;img src=&quot;:/帮助文档-随机数生成/help-3-991.png&quot; /&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1186</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../新建文本文档.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>476</width>
+    <height>434</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/背景/背景1.jpg);</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="新建文本文档.qrc">
+          <normaloff>:/随机数/随机数生成.png</normaloff>:/随机数/随机数生成.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>15</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>哈希函数算子</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="pushButton">
+        <property name="font">
+         <font>
+          <pointsize>30</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="新建文本文档.qrc">
+          <normaloff>:/新前缀/大数据处理.png</normaloff>:/新前缀/大数据处理.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="label_3">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>随机数生成</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="font">
+         <font>
+          <pointsize>30</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="新建文本文档.qrc">
+          <normaloff>:/哈希函数/哈希.png</normaloff>:/哈希函数/哈希.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="font">
+         <font>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="新建文本文档.qrc">
+          <normaloff>:/椭圆/椭圆.png</normaloff>:/椭圆/椭圆.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="label_5">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>椭圆曲线算子</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>大数运算单元</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>476</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <widget class="QMenu" name="menuFile_Properties">
+     <property name="title">
+      <string>File Properties</string>
+     </property>
+     <addaction name="actionRemove_BOM"/>
+     <addaction name="actionUTF_8"/>
+    </widget>
+    <addaction name="action"/>
+    <addaction name="action_2"/>
+    <addaction name="separator"/>
+    <addaction name="menuFile_Properties"/>
+    <addaction name="actionexit"/>
+    <addaction name="separator"/>
+    <addaction name="actionPower_saving_mode"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>视图</string>
+    </property>
+    <addaction name="actionMinimize"/>
+    <addaction name="actionMaximize"/>
+    <addaction name="actionRestore"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>设置</string>
+    </property>
+    <addaction name="actionSelect_All"/>
+    <addaction name="actionPreference"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>界面跳转</string>
+    </property>
+    <widget class="QMenu" name="menu_6">
+     <property name="title">
+      <string>大数运算单元</string>
+     </property>
+     <addaction name="action_10"/>
+     <addaction name="action_11"/>
+     <addaction name="action_12"/>
+    </widget>
+    <addaction name="action_6"/>
+    <addaction name="action_7"/>
+    <addaction name="menu_6"/>
+    <addaction name="action_9"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>导航</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_7">
+    <property name="title">
+     <string>关于</string>
+    </property>
+    <addaction name="action_IP"/>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+    <addaction name="action_5"/>
+    <addaction name="action_8"/>
+   </widget>
+   <widget class="QMenu" name="menu_8">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="action_13"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_7"/>
+   <addaction name="menu_8"/>
+  </widget>
+  <action name="action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>打开</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </action>
+  <action name="actionRemove_BOM">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Remove BOM</string>
+   </property>
+  </action>
+  <action name="actionUTF_8">
+   <property name="text">
+    <string>Code:UTF-8</string>
+   </property>
+  </action>
+  <action name="actionexit">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actionPower_saving_mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Power saving mode</string>
+   </property>
+  </action>
+  <action name="actionMinimize">
+   <property name="text">
+    <string>最小化</string>
+   </property>
+  </action>
+  <action name="actionMaximize">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>最大化</string>
+   </property>
+  </action>
+  <action name="actionRestore">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>还原窗口</string>
+   </property>
+  </action>
+  <action name="actionHide_Menu">
+   <property name="text">
+    <string>Hide Menu</string>
+   </property>
+  </action>
+  <action name="actionScientific_Mode">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Scientific Mode</string>
+   </property>
+  </action>
+  <action name="actionSelect_All">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Select All
+</string>
+   </property>
+  </action>
+  <action name="actionPreference">
+   <property name="text">
+    <string>Bug submit</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>哈希函数算子</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>随机数生成</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>椭圆曲线算子</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>大数逻辑运算</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>大数算数运算</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>大数模运算</string>
+   </property>
+  </action>
+  <action name="action_IP">
+   <property name="text">
+    <string>关于IP核</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>了解哈希函数算子</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>了解随机数生成</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>了解大数运算单元</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>了解椭圆曲线算子</string>
+   </property>
+  </action>
+  <action name="action_13">
+   <property name="text">
+    <string>帮助文档</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="新建文本文档.qrc"/>
+ </resources>
+ <connections/>
+</ui>

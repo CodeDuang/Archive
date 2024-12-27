@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>824</width>
+    <height>609</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(0, 52, 48, 250);</string>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_2{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_2:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>了解IP核</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>了解哈希函数算子</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_5{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_5:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>了解随机数生成</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_8{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_8:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>了解大数运算单元</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_11">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#pushButton_11{
+background-color: rgb(230, 231, 197);
+border-radius: 10px;
+}
+
+#pushButton_11:hover{
+border: 1px solid rgb(230, 231, 197);
+border-radius: 10px;
+background-color: rgb(72, 81, 62);
+color:rgb(255, 255, 255);
+
+}</string>
+        </property>
+        <property name="text">
+         <string>了解椭圆曲线算子</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>了解IP核</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTabWidget" name="tabWidget">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="currentIndex">
+         <number>4</number>
+        </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>了解IP核</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1.IP核概述&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核，全称知识产权核（英语：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Semiconductor intellectual property core&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;），是在集成电路的可重用设计方法学中，指某一方提供的、形式为逻辑单元、芯片设计的可重用模组。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核可以授权给另一方，也可以由一方拥有和使用。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;该术语来自设计中存在的专利或源代码版权的许可。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;专用集成电路和现场可编程门阵列逻辑系统的设计人员可以使用&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核作为构建块。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;随着芯片复杂度提升，不同芯片模块形成不同组合应用于不同的终端应用场景，又将形成新的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核。计算机基于冯诺依曼架构，由运算、控制、存储、输入、输出五大功能模块组成。芯片内部底层功能按照上述模块化划分包括数学运算&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP(&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;浮点、整数、逻辑运算等&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、存储器&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP(LPM&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;ROM&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;RAM&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;FIFO&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;FLASH &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;等&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、数字信号处理&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP(FIR&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;CIC&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;NCO&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;FFT &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;等&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、数字通信&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP(&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;编译器、编码器等&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、视频和图像处理&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP(&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;接口、滤波器、混合器、采样器等&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、输入&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;/&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;输出&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP(&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;时钟控制、锁相环、收发器等&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，接口&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP(ASI&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，以太网&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;PCI &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;编译器等&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，调试&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核等等。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;内核产品的广度令人震惊。它包括处理器、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;DSP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、通信、接口、内存、音频、视频、控制和安全&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，范围广泛，从简单的设备（如计数器）一直到复杂的设备（如&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; 32 &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;位定制软处理器）。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2.IP核背景 &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;的由来要从早期的芯片设计过程讲起。早期芯片的集成规模有限，设计复杂度不高，芯片上所有的电路都是由芯片设计者自主完成。设计水平不高、能力有限的芯片公司只能设计规模小的简单的芯片。设计水平高、能力强的芯片公司才可以设计规模大、功能复杂的芯片。这个时期，不论芯片规模大还是小，芯片从“头”到“脚”都是由芯片公司自己设计的。早期的高端芯片基本上都是由为数不多的大型国际芯片公司把持。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;随着现代信息社会对芯片要求提升，芯片的规模呈指数性增加，复杂性急剧增大。中小型芯片公司要独立完成一款复杂芯片设计几乎变得不太可能。特别是&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;20&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;世纪&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;80&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;年代末，芯片行业出现了晶圆代工&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Foundry)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;商业模式，大批的中小微芯片设计公司&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Fabless)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;应运而生。这个时期，芯片设计行业急需解决小芯片公司无法设计大芯片的难题。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;解决这一难题的启发思路很多。例如：搭积木和拼图画玩具；由标准件设计大型机器；由软件子程序&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;或者中间件&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;调用设计大型软件；用芯片搭建大型电子系统等。思路都是重复使用预先设计好的成熟的构件来搭建更复杂的系统，省掉对构件内部问题的考虑，化繁为简；重复使用构件，减少重复劳动，节省时间；重复使用构件，提高整个复杂系统搭建的成功率。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;芯片设计行业中的&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核开发和&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;复用，就是在这些思路启发下形成的。&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核就类似于上述的构件。&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核是预先设计好的具有独立功能的电路模块设计。有了&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核这种构件，大的复杂的芯片设计就变得较容易、周期短、易成功。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;3.IP核分类&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核模块分为软核（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Soft IP Core&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）、完成结构描述的固核（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Firm IP Core&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）和基于物理&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;描述并经过工艺验证的硬核（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Hard IP Core&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;三种类型的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核各有优缺点，用户会根据自己的实际需要来选择。以下是三种&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核的优缺点简要总结。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;软核：它以综合源代码的形式交付给用户，其优点是源代码灵活，在功能一级可以重新配置，可以灵活选择目标制造工艺。灵活性高、可移植性强，允许用户自配置。其缺点是对电路功能模块的预测性较差，在后续设计中存在发生错误的可能性，有一定的设计风险。并且&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;软核的知识产权保护难度较大。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;固核：它的灵活性和成功率介于&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;软核和&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;硬核之间，是一种折中的类型。和&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;软核相比，&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;固核的设计灵活性稍差，但在可靠性上有较大提高。目前，&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;固核是&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核的主流形式之一。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;硬核：它的最大优点是确保性能，如速度、功耗等达到预期效果。然而，&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;硬核与制造工艺相关，难以转移到新的工艺或者集成到新的结构中去，是不可以重新配置的。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;硬核不许修改的特点使其复用有一定的困难，因此只能用于某些特定应用，使用范围较窄。但&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;硬核的知识产权保护最为方便。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核的举例，最典型有&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; ARM &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;公司的各种类型的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;CPU IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核。许多&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;供应商提供的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;DSP IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;USB IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;PCI-X IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核、&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;WiFi IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核、以太网&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核、嵌入式存储器&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核等，五花八门，品种十分繁多。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;如果按大类分，大体上可分为处理器和微控制器类&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、存储器类&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、外设及接口类&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、模拟和混合电路类&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、通信类&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、图像和媒体类&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;等。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;全球大的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; EDA &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;供应商中，有些也是&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;供应商。例如美国新思科技&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Synopsys)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;可提供上千种各类&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;。涵盖逻辑电路&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Logic Libraries)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、嵌入式存储器&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Embedded Memories)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、模拟电路&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Analog Libraries)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、有线和无线通信接口&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Wired and Wireless Interface)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、安全&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Security)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;、嵌入式处理器&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Embedded Processors) &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和子系统&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;(Subsystems)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;等方面的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;芯片设计公司可以根据自身需求，向&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;供应商采购不同的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; IP &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核，如可采购软核进行自定义整合设计，也可以直接采购具备电&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;路布局的硬核实现更快速的芯片设计定型与量产。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>了解哈希函数算子</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_2">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;哈希函数是把任意长度的输入（又叫做预映射&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;pre-image&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）通过散列算法变换成固定长度的输出，该输出就是散列值或哈希值（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;hash value&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）。这种转换是一种压缩映射，也就是，散列值的空间通常远小于输入的空间，不同的输入可能会散列成相同的输出，所以不可能从散列值来确定唯一的输入值。简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;在密码学领域，哈希函数又被称为单向散列函数，哈希函数输出的哈希值很难找到逆向规律，所以在安全加速引擎&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;IP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;核中，哈希函数可以用来：消息认证码（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;MAC&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）生成、数字签名、密码存储和验证、安全摘要生成。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;对于密码安全的哈希函数，要求其具有以下六个附加属性：&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;（1）&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;抗第二原像攻击（弱抗碰撞性）：给定一个任意的输入&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;M&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，很难找到另一个输入&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;M'&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;M &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;≠&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; M&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;），使得&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;H(M) =  H(M’)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;（2）&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;强抗碰撞性：当两个不同的输入产生相同的输出时，会发生碰撞。如果没有人可以发现碰撞，哈希函数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;H&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）则具有抗碰撞性，即：找到两个不同的输入M和M'(M≠M’)，使得H(M)=H(M’)是计算不可行的，这里的“计算不可行(困难)”是在计算的复杂性角度所给出的概念。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;（3）&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;隐匿性（单向性）：隐匿属性声明如果我们给出&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;hash&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;函数&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;y= H&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）的输出，则没有可行的方法来确定输入&lt;/span&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;是什么。&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Times New Roman','serif'; font-size:12pt;&quot;&gt;（4）&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;谜题友好性：对于每个可能的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;位输出值&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;y&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，如果从具有高最小熵的分布中选择&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;k&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，则不可能找到&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;使得&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;H&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;k||x&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;） &lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;= y&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，即几乎不可能通过随机的方式找到另一个值&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;x&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，使之与给定&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;k&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;的哈希值一样。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;5&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）压缩性：哈希函数的输入是任意长度的，输出是固定长度的。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;6&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）容易计算：通过任意给定的&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;M&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，计算出&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;H(M)&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;是容易的。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_3">
+         <attribute name="title">
+          <string>了解随机数生成</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_3">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;解决信息安全的关键技术是密码学中的加密技术和解密技术。加密技术和解密技术的核心是密钥，密钥有安全等级比较高的，也有安全等级比较低的，随机数的随机性决定了密钥的可靠性。随机数的随机性越好，密钥越不容易被破解，反之，容易被破解；随机数发生器有真随机和伪随机之分。对于一些对安全性要求不太高的信息，可以使用伪随机数发生器产生的随机数作为密钥；而对于安全级别要求高的信息，就需要真随机数发生器生成随机数了，以这样的随机数作为密钥，信息就会更加安全。原因在于真随机数发生器不能预测下一次的输出，所以生成的随机数的随机性比较高；伪随机数发生器能预测下一次的输出，故生成的随机数的随机性比较低，仅适用于一些对于安全等级要求不高的场景。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;1.真随机数生成&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;真随机数发生器是利用物理过程的随机噪声作为熵源，如热力学噪声、闪烁噪声等。这些物理过程具有统计学随机特性；然后用比较器，&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;D&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;触发器等进行随机数提取；最后将提取的随机数进行后处理再输出；所以生成的随机数的随机性要比伪随机数发生器生成的随机数的随机性好，这样的数据是不能预测的，并且真随机数发生器还可以添加后处理模块来提高生成随机数的随机性。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;2.伪随机数生成&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;伪随机数发生器是以数学算法为基础，然后根据算法，通过一系列种子值计算出来的随机数，想要生成一个真正的随机数，对于计算机来说基本不可能。伪随机数发生器生成的随机数只能说近似随机，只要知道了初始值，然后根据公式，就可以推算出接下来生成的数据，这是可以预测的。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_4">
+         <attribute name="title">
+          <string>了解大数运算单元</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_4">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;针对不同的数据类型，计算机会分配大小不同的存储空间，但是计算机中存储空间的大小是固定的，数据位数少的数据可以正常存储和计算，数据位数较多时，计算机进行存储和计算就会出现差错．&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;例如两个二十位的数据做乘法，乘积位数较多，任何数据类型都无法处理。本系统主要通过加、减、乘三种运算，来实现大数运算的算法。大体来说，计算机对数据的处理主要是存储和计算两个部分，计算机在对位数较多的数据进行处理时，首先要解决存储的问题，数据存储是运算的前提。数据存储的基本思想是将数据以字符类型输入，并存储到数组中，同时按照先低位后高位的运算习惯，将其逆序存放，达到低位在前，高位在后的效果，为后面的逐位运算做好基础。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="tab_5">
+         <attribute name="title">
+          <string>了解椭圆曲线算子</string>
+         </attribute>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_5">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);
+border: 2px solid rgb(230, 231, 197);</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;椭圆曲线算子（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Elliptic Curve Operator&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）是在椭圆曲线密码学中使用的一种操作，用于实现基于椭圆曲线的加密和数字签名算法，是基于椭圆曲线数学理论实现的一种非对称加密算法。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;椭圆曲线密码学是一种现代的公钥密码学体系，其安全性基于椭圆曲线上的离散对数问题。在该密码学中，椭圆曲线算子涉及两个主要操作：点加法和点乘法。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;（1） &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;点加法（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Point Addition&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;在椭圆曲线上，可以定义两个点的相加操作。点加法中的主要运算是通过利用椭圆曲线的几何性质，将两点的切线与椭圆曲线的交点进行计算，然后将结果反射得到相加后的点。点加法操作使得椭圆曲线上的点集成为一个阿贝尔群。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;（2） &lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;点乘法（&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Point Multiplication&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;）&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;点乘法是对一个椭圆曲线上的点进行重复相加操作的运算。具体而言，对于给定的点&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;P&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;和一个整数&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;，点乘法通过将&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;P&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;与自身相加&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;n&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;次来计算&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;nP&lt;/span&gt;&lt;span style=&quot; font-family:'宋体'; font-size:12pt;&quot;&gt;。这个操作可以用于生成公钥和私钥之间的关联，以及进行数字签名和密钥交换等密码学操作。&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt; &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>824</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

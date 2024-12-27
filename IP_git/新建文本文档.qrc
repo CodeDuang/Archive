@@ -1,0 +1,65 @@
+<RCC>
+  <qresource prefix="新前缀">
+    <file>大数据处理.png</file>
+  </qresource>
+  <qresource prefix="随机数">
+    <file>随机数生成.png</file>
+  </qresource>
+  <qresource prefix="哈希函数">
+    <file>哈希.png</file>
+  </qresource>
+  <qresource prefix="椭圆">
+    <file>椭圆.png</file>
+  </qresource>
+  <qresource prefix="背景">
+    <file>背景1.jpg</file>
+  </qresource>
+  <qresource prefix="加载背景">
+    <file>背景2.png</file>
+  </qresource>
+  <qresource prefix="帮助文档-大数运算">
+    <file>help-4-1.png</file>
+    <file>help-4-2.png</file>
+    <file>help-4-3.png</file>
+    <file>help-4-4.png</file>
+    <file>help-4-5.png</file>
+    <file>help-4-6.png</file>
+    <file>help-4-7.png</file>
+    <file>help-4-8.png</file>
+    <file>help-4-9.png</file>
+    <file>help-4-90.png</file>
+    <file>help-4-91.png</file>
+    <file>help-4-92.png</file>
+    <file>help-4-93.png</file>
+    <file>help-4-94.png</file>
+    <file>help-4-95.png</file>
+    <file>help-4-96.png</file>
+    <file>help-4-97.png</file>
+    <file>help-4-98.png</file>
+    <file>help-4-99.png</file>
+  </qresource>
+  <qresource prefix="帮助文档-随机数生成">
+    <file>help-3-1.png</file>
+    <file>help-3-2.png</file>
+    <file>help-3-3.png</file>
+    <file>help-3-4.png</file>
+    <file>help-3-5.png</file>
+    <file>help-3-6.png</file>
+    <file>help-3-7.png</file>
+    <file>help-3-8.png</file>
+    <file>help-3-9.png</file>
+    <file>help-3-90.png</file>
+    <file>help-3-91.png</file>
+    <file>help-3-92.png</file>
+    <file>help-3-93.png</file>
+    <file>help-3-94.png</file>
+    <file>help-3-95.png</file>
+    <file>help-3-96.png</file>
+    <file>help-3-97.png</file>
+    <file>help-3-98.png</file>
+    <file>help-3-99.png</file>
+    <file>help-3-990.png</file>
+    <file>help-3-991.png</file>
+
+  </qresource>
+</RCC>
